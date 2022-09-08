@@ -8,6 +8,8 @@ import WishlistButton from '@components/wishlist/WishlistButton'
 import usePrice from '@framework/product/use-price'
 import ProductTag from '../ProductTag'
 
+import { SwymCollectionsButton } from '@lib/swym'
+
 interface Props {
   className?: string
   product: Product
@@ -130,6 +132,9 @@ const ProductCard: FC<Props> = ({
             </div>
           </>
         )}
+
+        <SwymCollectionsButton productData={product} />
+
       </a>
     </Link>
   )

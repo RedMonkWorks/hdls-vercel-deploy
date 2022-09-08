@@ -6,6 +6,11 @@ import type { LoginHook } from '../types/login'
 import useCustomer from '../customer/use-customer'
 
 import {
+  hdls_SwymConfig,
+  hdls_SetLocalStorage,
+} from './../../../../site/lib/swym'
+
+import {
   setCustomerToken,
   throwUserErrors,
   customerAccessTokenCreateMutation,
@@ -42,6 +47,14 @@ export const handler: MutationHook<LoginHook> = {
 
     if (accessToken) {
       setCustomerToken(accessToken)
+
+      console.log('Hdls - customer logged in Vercel', accessToken)
+
+      hdls_SwymConfig(accessToken).then((data) => {
+        // hdls_SetSwymConfig(data)
+
+        hdls_SetLocalStorage(data)
+      })
     }
 
     return null
