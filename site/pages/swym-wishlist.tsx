@@ -61,11 +61,11 @@ export default function Wishlist() {
                   aria-label={l['dt']}
                   href={l['cprops']['ou']}
                 >
-                  <div class="ProductCard_header__qlwPO">
-                    <h3 class="ProductCard_name__YciuQ">
+                  <div className="ProductCard_header__qlwPO">
+                    <h3 className="ProductCard_name__YciuQ">
                       <span>Greed Jacket</span>
                     </h3>
-                    <div class="ProductCard_price___JB_V">$161.00 USD</div>
+                    <div className="ProductCard_price___JB_V">$161.00 USD</div>
                   </div>
                   <div className="ProductCard_imageContainer__G6HoR">
                     <div>
