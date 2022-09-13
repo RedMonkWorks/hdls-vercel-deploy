@@ -596,7 +596,7 @@ export async function hdls_SwymConfig(customerToken) {
       redirect: 'follow',
     }
 
-    return fetch('http://localhost:5050/auth', requestOptions)
+    return fetch('https://e3b1-223-228-226-197.in.ngrok.io/auth', requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log('Hdls - User Login Detected and RegID generated')
