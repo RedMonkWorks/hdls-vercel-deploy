@@ -40,8 +40,7 @@ export default function Wishlist() {
 
   useEffect(() => {
     var hdls_ls_name = "hdls_ls";
-    var config_ls = localStorage.getItem(hdls_ls_name  || '{}')
-    var config = JSON.parse(config_ls)
+    var config = JSON.parse(localStorage.getItem(hdls_ls_name)  || '{}')
     // console.log(list.listcontents)
     hdls_GetOrCreateDefaultWishlist(config).then((data) => {
       setList(data.listcontents)
