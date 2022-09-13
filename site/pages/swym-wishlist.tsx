@@ -56,7 +56,7 @@ export default function Wishlist() {
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {list?.map((l) => (
                 <a
-                  key={l.epi || ""}
+                  key={l['epi']}
                   class="ProductCard_root__HqXTt ProductCard_simple__HMkuK animated fadeIn"
                   aria-label={l.dt || ""}
                   href={l.cprops.ou || ""}
