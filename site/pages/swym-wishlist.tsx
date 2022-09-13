@@ -56,10 +56,10 @@ export default function Wishlist() {
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {list?.map((l) => (
                 <a
-                  key={l.epi}
+                  key={l.epi || ""}
                   class="ProductCard_root__HqXTt ProductCard_simple__HMkuK animated fadeIn"
-                  aria-label={l.dt}
-                  href={l.cprops.ou}
+                  aria-label={l.dt || ""}
+                  href={l.cprops.ou || ""}
                 >
                   <div class="ProductCard_header__qlwPO">
                     <h3 class="ProductCard_name__YciuQ">
@@ -71,7 +71,7 @@ export default function Wishlist() {
                     <div>
                       <Image
                         alt={l.dt || 'Product Image'}
-                        src={l.iu}
+                        src={l.iu || ""}
                         className="ProductCard_productImage__nbfNy"
                         height={320}
                         width={320}
