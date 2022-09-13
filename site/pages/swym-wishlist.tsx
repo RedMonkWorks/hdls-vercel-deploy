@@ -39,8 +39,8 @@ export default function Wishlist() {
   let [list, setList] = useState([])
 
   useEffect(() => {
-    var hdls_ls_name = "hdls_ls";
-    var config = JSON.parse(localStorage.getItem(hdls_ls_name)  || '{}')
+    var hdls_ls_name = 'hdls_ls'
+    var config = JSON.parse(localStorage.getItem(hdls_ls_name) || '{}')
     // console.log(list.listcontents)
     hdls_GetOrCreateDefaultWishlist(config).then((data) => {
       setList(data.listcontents)
@@ -63,9 +63,11 @@ export default function Wishlist() {
                 >
                   <div className="ProductCard_header__qlwPO">
                     <h3 className="ProductCard_name__YciuQ">
-                      <span>Greed Jacket</span>
+                      <span>{l['dt']}</span>
                     </h3>
-                    <div className="ProductCard_price___JB_V">$161.00 USD</div>
+                    <div className="ProductCard_price___JB_V">
+                      {l['pr']}.00 USD
+                    </div>
                   </div>
                   <div className="ProductCard_imageContainer__G6HoR">
                     <div>
