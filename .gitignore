@@ -38,3 +38,6 @@ yarn-error.log*
 
 # Turborepo
 .turbo
+package-lock.json
+yarn.lock
+yarn.lock
