@@ -6,8 +6,8 @@ import { useCustomer } from '@framework/customer'
 import rangeMap from '@lib/range-map'
 import { useEffect, useState } from 'react'
 import {
-  hdls_RefreshSwymConfig,
   hdls_GetOrCreateDefaultWishlist,
+  SwymDeleteButton,
 } from '@lib/swym'
 import Image, { ImageProps } from 'next/image'
 import ProductTag from '@components/product/ProductTag'
@@ -73,6 +73,7 @@ export default function Wishlist() {
                       {l['pr']}.00 USD
                     </div>
                   </div>
+                  <SwymDeleteButton productData={l} />
                   <div className="ProductCard_imageContainer__G6HoR">
                     <div>
                       <Image

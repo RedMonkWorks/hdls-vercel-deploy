@@ -8,7 +8,6 @@ import { getCustomerToken, setCustomerToken } from '../utils/customer-token'
 
 import {
   hdls_SwymConfig,
-  hdls_SetSwymConfig,
   hdls_SetLocalStorage,
 } from './../../../../site/lib/swym'
 
@@ -30,7 +29,6 @@ export const handler: MutationHook<LogoutHook> = {
     console.log('Hdls - customer log off in Vercel')
 
     hdls_SwymConfig(null).then((data) => {
-      // hdls_SetSwymConfig(data)
       hdls_SetLocalStorage(data)
     })
 

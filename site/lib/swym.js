@@ -7,11 +7,6 @@ const SWYM_HDLS_CONFIG = {
   swymLname: 'My Wishlist',
 }
 
-let SWYM_TEST = {
-  // Only for yshit.thakur@swymcorp.com
-  lid: '4539f3a8-006b-48e6-b7a5-9bd89652e416',
-}
-
 let hdls_ls_name = 'hdls_ls' // Local Storage Key storing config and list objects
 let pdpIdentifier = '/product/' // Pageurl includes this and productHandle is the substring after this
 let productFormSelector = '[aria-label="Add to Cart"]' // Wishlist button is injected as child of this component
@@ -52,44 +47,6 @@ export default async function SwymInit(product) {
         .atob(productData.variants[0].id)
         .split('gid://shopify/ProductVariant/')[1]
 
-      // This step is to get list details and set in SWYM_Test
-      // if (SWYM_TEST.regid == null) {
-      //   hdls_SwymConfig(null).then((swymConfig) => {
-      //     hdls_GetOrCreateDefaultWishlist(swymConfig).then((listConfig) => {
-      //       var data = {
-      //         ...swymConfig,
-      //         ...listConfig,
-      //       }
-      //       console.log(data)
-      //       hdls_SetSwymConfig(data).then((finalData) => {
-      //         // Directly call below function when All data is available
-      //         hdls_AddToWishlist(productId, variantId, productUrl, finalData)
-
-      //         // Check wishlist state of Product
-      //         // hdls_ProductWishlistState(productId, variantId, finalData).then(
-      //         //   (x) => {
-      //         //     console.log('Final result', x)
-      //         //   }
-      //         // )
-      //       })
-      //     })
-      //   })
-      // } else {
-      //   hdls_GetOrCreateDefaultWishlist(SWYM_TEST).then((listConfig) => {
-      //     hdls_SetSwymConfig(listConfig).then((finalData) => {
-      //       // Directly call below function when All data is available
-      //       hdls_AddToWishlist(productId, variantId, productUrl, finalData)
-
-      //       // Check wishlist state of Product
-      //       // hdls_ProductWishlistState(productId, variantId, finalData).then(
-      //       //   (x) => {
-      //       //     console.log('Final result', x)
-      //       //   }
-      //       // )
-      //     })
-      //   })
-      // }
-
       var hdls_ls = JSON.parse(localStorage.getItem(hdls_ls_name))
 
       var swymConfig = await hdls_RefreshSwymConfig(hdls_ls)
@@ -101,44 +58,6 @@ export default async function SwymInit(product) {
 
     productForm.appendChild(swymButton)
   }
-
-  // Collections pages
-  // if (
-  //   pageUrl == 'http://localhost:3000/search/frontpage' ||
-  //   pageUrl == 'http://localhost:3000/search'
-  // ) {
-  //   console.log('Hdls - Collections page recognized')
-  //   document.querySelectorAll('[href *= "/product/"]').forEach((card) => {
-  //     var swymButton = document.createElement('button')
-  //     swymButton.innerText = `${'\u2665'}`
-
-  //     var productUrl = card.href
-  //     var productHandle = productUrl.split('/product/')[1]
-
-  //     swymButton.onclick = async function (e) {
-  //       e.preventDefault()
-
-  //       var productData = await hdls_ProductData(productHandle)
-
-  //       hdls_VariantSelector(productData, productHandle)
-
-  //       console.log('Hdls - Collection Wishlist Button Clicked')
-  //     }
-
-  //     console.log('In collections adding')
-
-  //     card.appendChild(swymButton)
-  //   })
-  // }
-
-  // window.onclick = function (event) {
-  //   if (event.target.className === 'wishlist-modal') {
-  //     event.target.style.display = 'none'
-  //   }
-  // }
-
-  // var listDetails = await hdls_getOrCreateDefaultWishlist(SWYM_TEST)
-  // console.log(listDetails)
 }
 
 async function hdls_ProductData(productHandle) {
@@ -228,20 +147,6 @@ function hdls_VariantSelector(productData, productHandle) {
       <h2 class="column-span-3">Which variant do you want to add to Wishlist</h2>
       <img class="column-span-3" src="${productData.images.edges[0].node.src}" width="200px">
     `
-
-    // productData.variants.edges.forEach((obj, index) => {
-    //   var variant = obj.node
-    //   var variantId = window.atob(variant.id).split('gid://shopify/Product/')[1]
-    //   swymForm.innerHTML += `
-    //     <div class="wishlist-variants">
-    //       <img src="${variant.image.src}" width="50px">
-    //       <p>${variant.title}</p>
-    //       <input type="radio" name="hdls_variant" value="${variantId}" ${
-    //     index === 0 ? 'checked' : ''
-    //   }>
-    //     </div>
-    //   `
-    // })
 
     productData.options.forEach((option, index) => {
       swymForm.innerHTML += `
@@ -334,40 +239,6 @@ function hdls_VariantSelector(productData, productHandle) {
           hdls_AddToWishlist(productId, variantId, productUrl, swymConfig)
 
           document.querySelector(`#empi-${productId}`).style.display = 'none'
-
-          // if (SWYM_TEST.regid == null) {
-          //   hdls_SwymConfig(null).then((swymConfig) => {
-          //     hdls_GetOrCreateDefaultWishlist(swymConfig).then((listConfig) => {
-          //       var data = {
-          //         ...swymConfig,
-          //         ...listConfig,
-          //       }
-          //       console.log(data)
-          //       hdls_SetSwymConfig(data).then((finalData) => {
-          //         // Directly call below function when All data is available
-          //         hdls_AddToWishlist(
-          //           productId,
-          //           variantId,
-          //           productUrl,
-          //           finalData
-          //         )
-
-          //         document.querySelector(`#empi-${productId}`).style.display =
-          //           'none'
-          //       })
-          //     })
-          //   })
-          // } else {
-          //   hdls_GetOrCreateDefaultWishlist(SWYM_TEST).then((listConfig) => {
-          //     hdls_SetSwymConfig(listConfig).then((finalData) => {
-          //       // Directly call below function when All data is available
-          //       hdls_AddToWishlist(productId, variantId, productUrl, finalData)
-
-          //       document.querySelector(`#empi-${productId}`).style.display =
-          //         'none'
-          //     })
-          //   })
-          // }
         } else {
           variantNotFound++
         }
@@ -483,7 +354,7 @@ async function hdls_DeleteFromWishlist(
   urlencoded.append('lid', swymConfig.lid)
   urlencoded.append(
     'd',
-    `[{ "epi":${variantId}, "empi": ${productId}, "du":"${productUrl}", "cprops": {}, "note": null, "qty": 1 }]`
+    `[{ "epi":${variantId}, "empi": ${productId}, "du":"${productUrl}"}]`
   )
 
   var requestOptions = {
@@ -762,17 +633,8 @@ export async function hdls_RefreshSwymConfig(swymConfig) {
   }
 }
 
-export async function hdls_SetSwymConfig(swymConfig) {
-  SWYM_TEST = {
-    ...SWYM_TEST,
-    ...swymConfig,
-  }
-
-  return SWYM_TEST
-}
-
 export function SwymCollectionsButton(productData) {
-  const Button = () => {
+  const SwymButton = () => {
     return (
       <button className="swymCollectionsButton" onClick={variantModal}>
         {'\u2665'}
@@ -794,7 +656,41 @@ export function SwymCollectionsButton(productData) {
 
   return (
     <>
-      <Button />
+      <SwymButton />
+    </>
+  )
+}
+
+export function SwymDeleteButton(productData) {
+  const SwymButton = () => {
+    return (
+      <button className="swymCollectionsButton" onClick={variantModal}>
+        {'\u274C'}
+      </button>
+    )
+  }
+
+  var data = productData.productData
+
+  async function variantModal(e) {
+    e.preventDefault()
+
+    var hdls_ls = JSON.parse(localStorage.getItem(hdls_ls_name))
+
+    var swymConfig = await hdls_RefreshSwymConfig(hdls_ls)
+
+    // console.log(data.empi, data.epi, data.du, swymConfig)
+    
+    hdls_DeleteFromWishlist(data.empi, data.epi, data.du, swymConfig).then(() => {
+      e.target.parentElement.remove()
+    })
+
+    console.log('Hdls - Delete Wishlist Button Clicked', data)
+  }
+
+  return (
+    <>
+      <SwymButton />
     </>
   )
 }
