@@ -11,6 +11,8 @@ import {
 } from '@lib/swym'
 import Image, { ImageProps } from 'next/image'
 import ProductTag from '@components/product/ProductTag'
+import cn from 'clsx'
+import s from './../components/product/ProductCard/ProductCard.module.css'
 
 export async function getStaticProps({
   preview,
@@ -35,6 +37,8 @@ export default function Wishlist() {
   const { data: customer } = useCustomer()
   // @ts-ignore Shopify - Fix this types
   // console.log(customer)
+
+  const rootClassName = cn(s.root)
 
   let [list, setList] = useState([])
 
