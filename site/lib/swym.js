@@ -773,7 +773,7 @@ export async function hdls_SetSwymConfig(swymConfig) {
 
 export function SwymCollectionsButton(productData) {
   const Button = () => {
-    return return (
+    return (
       <button className="swymCollectionsButton" onClick={variantModal}>
         {'\u2665'}
       </button>
