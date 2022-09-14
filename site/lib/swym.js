@@ -799,7 +799,7 @@ export function SwymCollectionsButton(productData) {
   )
 }
 
-export function hdls_SetLocalStorage(swymData) {
+export async function hdls_SetLocalStorage(swymData) {
   var hdls_ls = JSON.parse(localStorage.getItem(hdls_ls_name))
 
   var addData = {

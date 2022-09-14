@@ -48,13 +48,24 @@ export const handler: MutationHook<LoginHook> = {
     if (accessToken) {
       setCustomerToken(accessToken)
 
-      console.log('Hdls - customer logged in Vercel', accessToken)
+      console.log('Hdls - Customer logged in Vercel', accessToken)
+      
+      if(localStorage.getItem('hdls_ls') == null)
+      {
+        hdls_SwymConfig(null).then((data) => {
+          hdls_SetLocalStorage(data).then(() => {
+            hdls_SwymConfig(accessToken).then((x) => {
+              hdls_SetLocalStorage(x)
+            })
+          })
+        })
+      } else {
+        hdls_SwymConfig(accessToken).then((data) => {
+          hdls_SetLocalStorage(data)
+        })
+      }
 
-      hdls_SwymConfig(accessToken).then((data) => {
-        // hdls_SetSwymConfig(data)
-
-        hdls_SetLocalStorage(data)
-      })
+      
     }
 
     return null
