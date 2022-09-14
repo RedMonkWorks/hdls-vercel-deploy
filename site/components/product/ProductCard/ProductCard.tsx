@@ -82,6 +82,9 @@ const ProductCard: FC<Props> = ({
                 </div>
               </div>
             )}
+
+            <SwymCollectionsButton productData={product} />
+
             <div className={s.imageContainer}>
               {product?.images && (
                 <div>
@@ -114,6 +117,9 @@ const ProductCard: FC<Props> = ({
               name={product.name}
               price={`${price} ${product.price?.currencyCode}`}
             />
+
+            <SwymCollectionsButton productData={product} />
+
             <div className={s.imageContainer}>
               {product?.images && (
                 <div>
@@ -132,9 +138,6 @@ const ProductCard: FC<Props> = ({
             </div>
           </>
         )}
-
-        <SwymCollectionsButton productData={product} />
-
       </a>
     </Link>
   )

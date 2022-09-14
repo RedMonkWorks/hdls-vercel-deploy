@@ -74,7 +74,7 @@ export default function Wishlist() {
                       <Image
                         alt={l['dt'] || 'Product Image'}
                         src={l['iu']}
-                        className="ProductCard_productImage__nbfNy"
+                        className="Wishlist_listImage ProductCard_productImage__nbfNy"
                         height={320}
                         width={320}
                         quality="85"
