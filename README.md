@@ -1,4 +1,4 @@
-Run the Storefront Locally
+## Run the Storefront Locally
 
 For the initial build, In root Folder
 ```bash
@@ -6,18 +6,21 @@ npm run build --workspace=packages
 npm install
 npm run dev --workspace=site
 ```
+
 If a build exists
 ```bash
 cd site
 npm run dev
 ```
 
-Swym Files
+### Swym Files
 
-Javascript File
+Javascript File:
+
 root/site/lib
 
-CSS File
+CSS File:
+
 root/site/assets
 
 
